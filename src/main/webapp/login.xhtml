@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Admin login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h3>Unesite korisničko ime i šifru</h3>
+        <h:form>
+                <h:outputText value="Korisničko ime:"/>
+                <h:inputText id="username" value="#{personsManagedBean.username}" required="true" requiredMessage="Korisničko ime je obavezno"/>
+                <h:message for="username" style="color: red"/>
+                <br></br><br></br>
+                <h:outputText value="Lozinka:"/>
+                <h:inputText id="password" value="#{personsManagedBean.password}" required="true" requiredMessage="Lozinka je obavezna"/>
+                <h:message for="password" style="color: red"/>
+                <br></br><br></br>
+                <h:commandButton value="Login" action="#{personsManagedBean.login()}"/>
+                <br></br><br></br>
+                <h:outputText value="#{personsManagedBean.message}" style="color: red"/>
+        </h:form>
+    </body>
+</html>
