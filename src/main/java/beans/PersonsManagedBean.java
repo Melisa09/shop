@@ -87,6 +87,12 @@ public class PersonsManagedBean implements Serializable {
         }
        return null;
     }
+    
+    public String register(){ 
+    Persons persons= new Persons(personID, username, password);
+    personsFacadeLocal.create(persons);
+    init();
+    return "login";
 }
 
-    
+}

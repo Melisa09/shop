@@ -67,11 +67,16 @@ public class Orders implements Serializable {
         this.orderID = orderID;
     }
 
-    public Orders(Integer orderID, int ordernum, String customer, String address) {
-        this.orderID = orderID;
+    public Orders(int orderID, int ordernum, Integer productID, String customer, String address) {
+   
         this.ordernum = ordernum;
         this.customer = customer;
         this.address = address;
+        this.orderID= orderID;
+    }
+
+    public Orders(Integer orderID, Integer ordernum, String customer, String address) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public Integer getOrderID() {

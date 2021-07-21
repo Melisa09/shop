@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>My cart</title>
+        <h:outputStylesheet name="style.css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:dataTable value="#{ordersManagedBean.cart}" var="orders" cellpadding="2" cellspacing="0" border="1">
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                        #{orders.productID}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                        #{orders.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Quantity</f:facet>
+                        #{orders.quantity}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Price</f:facet>
+                        #{orders.price}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Bill</f:facet>
+                        #{orders.price*orders.quantity}
+                </h:column>
+            </h:dataTable>
+            <br></br>
+            <br></br>
+            <h:commandButton value="Buy" action="order" />
+        </h:form>
+        <br></br>
+        <h:button value="Continue Shopping" outcome="index"></h:button>
+
+    </h:body>
+</html>

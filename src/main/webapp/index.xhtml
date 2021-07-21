@@ -5,38 +5,42 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Welcome</title>
-         <link rel="stylesheet" type="text/css" href="style.css"/>
+        <meta charset="utf-8" />
+        <h:outputStylesheet name="style.css"/>
     </h:head>
     <h:body>
         <h:form class="table">
-        <h:dataTable value="#{productsManagedBean.productsList}" var="products">
-            <h:column>
-                <f:facet name="header">NAME</f:facet>
-                    #{products.name}
-            </h:column>
-            <h:column>
-                
-                <f:facet name="header">PRICE</f:facet>
-                 #{products.price}
-            </h:column>
-           <h:column>
-                <f:facet name="header">QUANTITY</f:facet>
-                 <h:inputText value="#{productsManagedBean.quantity}"/>
-                 </h:column>
-
+            <h:dataTable value="#{productsManagedBean.productsList}" var="products" cellpadding="2" cellspacing="0" border="1">
+                <h:column>
+                    <f:facet name="header">NAME</f:facet>
+                        #{products.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">PRICE</f:facet>
+                        #{products.price}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">AVAILABLE</f:facet>
+                        #{products.quantity}
+                </h:column>
+                <h:column>
+                    <h:commandButton value = "Add" action ="#{ordersManagedBean.addTo(products)}"/>
+                </h:column>
             </h:dataTable>
-           <h:commandButton value="Pregled" action="order"/>
-     
-            
-         <br></br>
-         <br></br>
-        <h:commandButton value="Login" action="login"/>
+            <br></br>
+            <h:outputText class= "quantitiy" value="Quantity:"></h:outputText>
+            <h:inputText value="#{ordersManagedBean.quantityCart}"/>
+            <br></br><br></br>
+            <h:button value="Cart" outcome="cart"></h:button>
+            <br></br>
+            <br></br>
+            <h:commandButton value="Login" action="login"/>
         </h:form>  
-        
-  
+
+
     </h:body>
 </html>
 
 
-       
-        
+
+

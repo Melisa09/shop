@@ -15,7 +15,7 @@
                 <h:inputText id="address" value="#{ordersManagedBean.address}" required="true" requiredMessage="Adresa je obavezna"/>
                 <h:message for="address" style="color: red"/>
                 <br></br><br></br>
-                <h:commandButton value="Kupi" action="#{personsManagedBean.buy()}"/>
+                <h:commandButton value="Kupi" action="#{ordersManagedBean.buy}"/>
                 <br></br><br></br>
                 <h:outputText value="#{personsManagedBean.message}" style="color: red"/>
         </h:form>       

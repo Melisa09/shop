@@ -22,7 +22,7 @@
                  #{products.quantity}
             </h:column>
             <h:column>
-                 <h:commandButton value="Delete" action="#{productsManagedBean.delete(productID)}" />
+                <h:commandButton value="Delete" action="#{productsManagedBean.delete(products.productID)}" />
             </h:column>
             
         </h:dataTable>
@@ -30,8 +30,8 @@
    
      <br></br>
      <h:commandButton value="Add product" action="new" />
-        
-     
+      <br></br> <br></br>
+     <h:commandButton value="Register" action="register" />
     </h:form>
       
  

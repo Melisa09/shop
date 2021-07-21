@@ -55,9 +55,10 @@ public class Persons implements Serializable {
         this.personID = personID;
     }
 
-    public Persons(Integer personID, String username) {
+    public Persons(Integer personID, String username, String password) {
         this.personID = personID;
         this.username = username;
+        this.password= password;
     }
 
     public Integer getPersonID() {

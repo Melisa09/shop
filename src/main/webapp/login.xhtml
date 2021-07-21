@@ -15,7 +15,7 @@
                 <h:message for="username" style="color: red"/>
                 <br></br><br></br>
                 <h:outputText value="Lozinka:"/>
-                <h:inputText id="password" value="#{personsManagedBean.password}" required="true" requiredMessage="Lozinka je obavezna"/>
+                <h:inputSecret id="password" value="#{personsManagedBean.password}" required="true" requiredMessage="Lozinka je obavezna"/>
                 <h:message for="password" style="color: red"/>
                 <br></br><br></br>
                 <h:commandButton value="Login" action="#{personsManagedBean.login()}"/>

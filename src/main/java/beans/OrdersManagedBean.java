@@ -1,36 +1,46 @@
-
 package beans;
 
-
 import entity.Orders;
+import entity.Products;
 import facade.OrdersFacadeLocal;
+import facade.ProductsFacadeLocal;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 
+import javax.inject.Inject;
 
 @Named(value = "ordersManagedBean")
 @SessionScoped
 public class OrdersManagedBean implements Serializable {
-
-    private Integer ordernum;
+    
+    int min=1;
+    int max=20;
+    private Integer ordernum= (int)Math.floor(Math.random()*(max-min+1)+min);
     private String customer;
     private String address;
-   private String productID;
-   private List<Orders> _ordersList;
-   private String bill;
-   
-    @Inject
-    OrdersFacadeLocal ordersFacadeLocal;
+    private List<Orders> _ordersList;
+
+    
+    private List<Products> cart = new ArrayList<>();
+    private int quantityCart;
+    
     
     @PostConstruct
-    private void init(){
+    private void init() {
         _ordersList = ordersFacadeLocal.findAll();
     }
-    
+
+
+    @Inject
+    OrdersFacadeLocal ordersFacadeLocal;
+
+    @Inject
+    ProductsFacadeLocal productsFacadeLocal;
+
     public OrdersManagedBean() {
     }
 
@@ -58,34 +68,30 @@ public class OrdersManagedBean implements Serializable {
         this.address = address;
     }
 
-    public String getProductID() {
-        return productID;
+    public int getQuantityCart() {
+        return quantityCart;
     }
 
-    public void setProductID(String productID) {
-        this.productID = productID;
+    public void setQuantityCart(int quantityCart) {
+        this.quantityCart = quantityCart;
     }
 
-    public List<Orders> getOrdersList() {
-        return _ordersList;
+    public List<Products> getCart() {
+        return cart;
     }
 
-    public void setOrdersList(List<Orders> _ordersList) {
-        this._ordersList = _ordersList;
+    public void setCart(List<Products> cart) {
+        this.cart = cart;
     }
 
-    public String getBill() {
-        return bill;
+    public String addTo(Products product) {
+        cart.add(new Products(product.getProductID(), product.getName(), quantityCart, product.getPrice()));
+        return "index";
     }
 
-    public void setBill(String bill) {
-        this.bill = bill;
+    public String buy() {
+        
+        return "orderConfirmed";
     }
-    
-    
-    public String buy(){
-        return null;
-      
-}
-    
+
 }
